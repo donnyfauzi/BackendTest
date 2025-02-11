@@ -1,7 +1,9 @@
-const express = require("express")
-const router = express.Router()
-const { addChecklist } = require("../controllers/c_newChecklist")
+const express = require('express')
+const { addChecklist } = require('../controllers/c_newChecklist')
+const { verifyToken } = require('../middlewares/login')
 
-router.post('/addChecklist', addChecklist)
+const router = express.Router();
+
+router.post('/addChecklist',verifyToken, addChecklist)
 
 module.exports = router
