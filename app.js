@@ -11,6 +11,7 @@ const r_checklist = require('./routes/r_checklist')
 const r_newChecklist = require('./routes/r_newChecklist')
 const r_dltChecklist = require('./routes/r_dltChecklist')
 const r_checklistItem = require('./routes/r_checklistItem')
+const r_addChecklistItem = require('./routes/r_addChecklistItem')
 
 
 app.use(bodyPaser.json())
@@ -21,6 +22,7 @@ app.use('/api', r_checklist)
 app.use('/api', r_newChecklist)
 app.use('/api', r_dltChecklist)
 app.use('/api', r_checklistItem)
+app.use('/api', r_addChecklistItem)
 
 
 
