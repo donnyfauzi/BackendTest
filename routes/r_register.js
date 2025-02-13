@@ -7,6 +7,8 @@ const router = express.Router()
  * @swagger
  * /api/register:
  *   post:
+ *     tags:
+ *       - Register
  *     summary: Registrasi user baru
  *     description: Mendaftarkan user baru dengan email dan password.
  *     requestBody:
@@ -27,10 +29,30 @@ const router = express.Router()
  *                 example: "password123"
  *     responses:
  *       201:
- *         description: User berhasil didaftarkan
+ *         description: User berhasil didaftarkan    
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "User berhasil didaftarkan"
+ *                 new_user:
+ *                   type: object
+ *                   properties:
+ *                     name:
+ *                       type: string
+ *                       example: "Nama User Baru"
+ *                     email:
+ *                       type: string
+ *                       example: "user@example.com"
+ *                     password:
+ *                       type: string
+ *                       example: "hash password"
  *       400:
  *         description: Input tidak valid
- */
+*/
 
 router.post('/register', registerUser)
 

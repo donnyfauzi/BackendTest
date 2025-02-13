@@ -19,6 +19,10 @@ const verifyToken = (req, res, next) => {
   } catch (error) {
     res.status(401).json({ message: 'Token tidak valid' })
   }
+
+  const tokenini = req.header("Authorization");
+  console.log("Token diterima:", tokenini);
+
 }
 
 module.exports = { verifyToken }

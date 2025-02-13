@@ -6,23 +6,41 @@ const swaggerUi     = require("swagger-ui-express")
 const app = express()
 const port = 8080
 
-// Konfigurasi Swagger
 const swaggerOptions = {
-  definition: {
-    openapi: '3.0.0',
+  swaggerDefinition: {
+    openapi: "3.0.0",
     info: {
-      title: 'Checklist API',
-      version: '1.0.0',
-      description: 'Dokumentasi API untuk aplikasi checklist',
+      title: "API Dokumentasi",
+      version: "1.0.0",
+      description: "Dokumentasi API dengan Swagger",
     },
     servers: [
       {
-        url: 'http://localhost:8080',
+        url: "http://localhost:8080",
       },
     ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        BearerAuth: [], 
+      },
+    ],
+    tags: [
+      { name: "Register" },
+      { name: "Login" },
+      { name: "Get Checklist" },
+    ],
   },
-  apis: ['./routes/*.js'], 
-}
+  apis: ["./routes/*.js"], 
+};
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
