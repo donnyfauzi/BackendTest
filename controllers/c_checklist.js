@@ -7,6 +7,6 @@ const getChecklists = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Terjadi kesalahan", error })
   }
-};
+}
 
 module.exports = { getChecklists }
